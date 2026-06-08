@@ -40,5 +40,23 @@ describe('formatearTexto', () => {
     expect(resultado).toBe('');
   });
 
-  
+  //-- validar los casos invalidos
+    it('debe retornar invalido cuando el texto esta vacio', () => {
+        const resultado = validarTexto(''); //arrange-act
+        expect(resultado.valido).toBe(false);//Assert
+        expect(resultado.error).toContain('vacío')
+    });
+    //-- validar los casos invalidos
+    it('debe retornar invalido cuando el texto tiene menos de tres caracteres', () => {
+        const resultado = validarTexto('LO'); //arrange-act
+        expect(resultado.valido).toBe(false);//Assert
+        expect(resultado.error).toContain('3')
+    });
+    it('debe retornar invalido cuando el texto tiene menos de doscientos caracteres', () => {
+        const resultado = validarTexto('LOajhdbvhjasbdvjashbvjvhdsvcjhdsvjavcaadsmbcvascvnmdsbvsndnmcvjdcvebcebhjbvejchvujevcuegvcegvchegvhegvchegcvhecvhevchvehcveghcveghcvehgvceghvcghevcghevcghevcghevcghevghcveghvcghevcghevcgevcgvegcvegcvegcvegvcgevcgcevgevcgvgcvhgwvscgvsydtcvsydvhgscvsdcshcsghcvgweyvegscvgcvgyswveyvsytcvsyevysfvvcfvscvsvcgsyvdcghvyetvhgscvwyev'); //arrange-act
+        expect(resultado.valido).toBe(false);//Assert
+        expect(resultado.error).toContain('200')
+    });
+
+
 });
