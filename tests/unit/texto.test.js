@@ -57,6 +57,39 @@ describe('formatearTexto', () => {
         expect(resultado.valido).toBe(false);//Assert
         expect(resultado.error).toContain('200')
     });
+    it('debe retornar un string vacio si solo hay espacios', () => {
+        const resultado = formatearTexto("    ")
+        expect(resultado).toBe('')
+    });
+    it('debe retornar un string vacio si solo hay espacios', () => {
+        const resultado = formatearTexto("    ")
+        expect(resultado).toBe('')
+    });
 
+
+});
+
+// ============================================================
+// Pruebas unitarias para Pruebas adicionales — Tarea 1
+// ============================================================
+describe('Pruebas adicionales — Tarea 1', () => {
+    it('debe retornar valido si se usan emojis,caracteres especiales', () => {
+        const resultado = validarTexto('.@ñó😊');
+        expect(resultado.valido).toBe(true);
+    });
+    it('debe retornar invalido si se usan tres espacios y leugo una letra', () => {
+        const resultado = validarTexto('   A');
+        expect(resultado.valido).toBe(false);
+        expect(resultado.error).toContain("3")
+    });
+
+    it('debe retornar un string formateado si se ingresa un caracter especial', () => {
+        const resultado = formatearTexto('árbol');
+        expect(resultado).toBe('Árbol');
+    });
+    it('debe retornar un el mismo string si ya esta formateado', () => {
+        const resultado = formatearTexto('Arbol');
+        expect(resultado).toBe('Arbol');
+    });
 
 });
